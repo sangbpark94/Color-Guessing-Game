@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Color Guessing Game</title>
+	<meta name="author" content="Sang Park">
+</head>
+<body onload=do_game()>
+	<script>
+		var target;
+		var guess_input;
+		var finished = false;
+		var guess = 0;
+		var colors = ["aqua", "bisque", "coral", "dodgerblue", "fuchsia", "green", 
+					  "indigo", "khaki", "lime", "magenta", "navy", "orchid",
+					  "plum", "salmon", "teal"];
+		
+		function do_game(){
+			var random_number = Math.random() * 16;
+			var int_random_number = Math.floor(random_number);
+			target = colors[int_random_number];
+			//alert("The color chosen is " + target);
+			
+			while(!finished){
+				guess_input = prompt("I am thinking of one of these colors:\n\n" +
+									 "aqua, bisque, coral, dodgerblue, fuchsia, green, " +
+									 "indigo, khaki, lime, magenta, navy, orchid, " +
+									 "plum, salmon, teal\n\n" + "What color am I thinking of?");
+				guess += 1;
+				if(target == guess_input)
+					finished = true;
+			}
+			myBody=document.getElementsByTagName("body")[0];
+			myBody.style.background=target;
+			alert("Congratulations! You have guessed the color!\n\n" +
+				  "It took you " + guess + " guesses to finish the game!\n\n" +
+				  "You can see the colour in the background.");
+		}	
+	</script>
+</body>
+</html>
+	
